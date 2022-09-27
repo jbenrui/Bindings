@@ -1,0 +1,7 @@
+{
+  "name": "binding",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
