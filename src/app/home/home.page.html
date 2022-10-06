@@ -12,9 +12,25 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-item lines="none">
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input (keyup.enter)="addPerson(name)" placeholder="Introduce el nombre" [(ngModel)]="name" required></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="addPerson(name)">Añadir</ion-button><br>
+  <dir>
+    <ion-text id="empty-list" color="warning" *ngIf="people.length==0">No exiten personas aun</ion-text>
+  </dir>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!--Recorre el bucle y pasamos la variable person por el campo data.
+  Y envia este campo con la informacion al componente data-->
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let person of people" size="9" size-sm="3">
+        <app-person [data]="person" (onremove)="removePerson($event)"></app-person>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  
+  
 </ion-content>
